@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio – Siti Nikmatus Sholihah</title>
-    <link <link
+    <link
         href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=Yellowtail&family=Caveat&family=JetBrains+Mono:wght@400;600&display=swap"
         rel="stylesheet">
     <style>
@@ -25,7 +25,9 @@
         }
 
         html {
-            scroll-behavior: smooth
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%
         }
 
         body {
@@ -34,6 +36,10 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden
+        }
+
+        img {
+            max-width: 100%
         }
 
         a {
@@ -73,6 +79,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             padding: 22px 0;
             font-size: 11px;
             letter-spacing: .1em;
@@ -94,23 +101,13 @@
             overflow: hidden
         }
 
-        .hero-in {
-            position: relative;
-            z-index: 3;
-            min-height: max(720px, calc(100vh - 100px));
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding-bottom: 80px
-        }
-
         .big {
             position: absolute;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Anton', sans-serif;
-            font-size: clamp(110px, 24vw, 330px);
+            font-size: clamp(80px, 24vw, 330px);
             line-height: 1;
             color: var(--red);
             white-space: nowrap;
@@ -137,8 +134,8 @@
             width: 100%;
             object-fit: contain;
             object-position: bottom center;
-            -webkit-mask-image: none;
-            mask-image: none
+            -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 78%, transparent 100%)
         }
 
         .hero::after {
@@ -287,7 +284,8 @@
             font-size: 11px;
             letter-spacing: .1em;
             text-transform: uppercase;
-            cursor: pointer
+            cursor: pointer;
+            padding: 8px 0
         }
 
         .p-head button:hover {
@@ -328,6 +326,34 @@
             line-height: 1.15;
             text-transform: uppercase;
             max-width: 80%
+        }
+
+        .thumb .shot {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform .6s
+        }
+
+        .thumb.has-shot::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(7, 7, 7, .8), rgba(7, 7, 7, .1) 45%, rgba(7, 7, 7, .85))
+        }
+
+        .card:hover .thumb .shot {
+            transform: scale(1.06)
+        }
+
+        .thumb h4,
+        .thumb .tech {
+            position: relative;
+            z-index: 2
         }
 
         .thumb .tech {
@@ -385,7 +411,8 @@
         }
 
         .mid>div {
-            padding: 36px 32px
+            padding: 36px 32px;
+            min-width: 0
         }
 
         .mid>div+div {
@@ -497,7 +524,8 @@
             background: linear-gradient(160deg, var(--red), var(--red2) 60%, #4a0508);
             display: flex;
             flex-direction: column;
-            justify-content: space-between
+            justify-content: space-between;
+            gap: 24px
         }
 
         .quote .q {
@@ -523,7 +551,11 @@
             grid-template-columns: 1fr 1.1fr 1fr;
             gap: 32px;
             align-items: center;
-            padding: 48px 0
+            padding: 48px 4vw
+        }
+
+        .contact>div {
+            min-width: 0
         }
 
         .contact h2 {
@@ -548,7 +580,7 @@
             color: var(--red);
             text-transform: uppercase;
             border: 1px solid var(--red);
-            padding: 8px 14px;
+            padding: 10px 16px;
             border-radius: 30px;
             transition: .3s
         }
@@ -565,7 +597,8 @@
             padding: 14px 0;
             border-bottom: 1px solid var(--line);
             font-size: 13px;
-            word-break: break-all
+            word-break: break-all;
+            overflow-wrap: anywhere
         }
 
         .c-item i {
@@ -645,7 +678,8 @@
         .term .bar i {
             width: 14px;
             height: 14px;
-            border-radius: 50%
+            border-radius: 50%;
+            flex: none
         }
 
         .term .bar span {
@@ -654,9 +688,10 @@
 
         .term .tb {
             padding: 36px 40px 44px;
-            font-size: clamp(13px, 1.6vw, 18px);
+            font-size: clamp(12px, 1.6vw, 18px);
             line-height: 1.9;
-            min-height: 340px
+            min-height: 340px;
+            overflow-wrap: anywhere
         }
 
         .cmd {
@@ -711,45 +746,9 @@
             font-size: 11px;
             letter-spacing: .25em;
             color: #666;
-            text-transform: uppercase
-        }
-
-        /* CURSOR */
-        #cur {
-            position: fixed;
-            z-index: 10000;
-            width: 44px;
-            height: 44px;
-            border: 1.5px solid #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            left: -100px;
-            top: -100px;
-            transition: width .25s, height .25s, border-color .25s
-        }
-
-        #cur::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #fff;
-            transform: translate(-50%, -50%)
-        }
-
-        #cur.grow {
-            width: 70px;
-            height: 70px;
-            border-color: var(--red)
-        }
-
-        .has-cur,
-        .has-cur * {
-            cursor: none !important
+            text-transform: uppercase;
+            text-align: center;
+            padding: 0 16px
         }
 
         .reveal {
@@ -763,11 +762,331 @@
             transform: none
         }
 
-        @media(max-width:900px) {
+        /* ===== HALAMAN DETAIL PROJECT ===== */
+        [hidden] {
+            display: none !important
+        }
 
-            .hero,
+        .d-top {
+            padding-top: 22px;
+            padding-bottom: 18px
+        }
+
+        .d-back {
+            display: inline-flex;
+            gap: 8px;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 8px 0;
+            transition: .3s
+        }
+
+        .d-back:hover {
+            color: var(--red)
+        }
+
+        .d-narrow {
+            max-width: 1240px
+        }
+
+        .d-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 8px 0 32px
+        }
+
+        .d-head .d-num {
+            font-family: 'Anton', sans-serif;
+            color: var(--red);
+            font-size: 20px;
+            letter-spacing: .1em
+        }
+
+        .d-head h1 {
+            font-family: 'Anton', sans-serif;
+            font-weight: 400;
+            font-size: clamp(34px, 5.5vw, 72px);
+            line-height: 1.02;
+            text-transform: uppercase;
+            margin-top: 6px;
+            max-width: 900px
+        }
+
+        .d-head .d-role {
+            color: var(--muted);
+            font-size: 13px;
+            letter-spacing: .04em;
+            margin-top: 12px
+        }
+
+        .d-head .d-links {
+            margin: 0
+        }
+
+        .d-frame {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #0d0d0d;
+            box-shadow: 0 30px 70px rgba(212, 20, 28, .12)
+        }
+
+        .d-frame .fbar {
+            display: flex;
+            gap: 7px;
+            padding: 12px 16px;
+            background: #161616;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .d-frame .fbar i {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%
+        }
+
+        .d-frame img {
+            display: block;
+            width: 100%;
+            height: auto
+        }
+
+        .d-body {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 48px;
+            padding: 40px 0 48px
+        }
+
+        .d-body>div {
+            min-width: 0
+        }
+
+        .d-body h3 {
+            margin: 0 0 12px
+        }
+
+        .d-body p {
+            color: #cfcfcf;
+            font-size: 14px;
+            margin-bottom: 14px;
+            max-width: 70ch
+        }
+
+        .d-list {
+            list-style: none;
+            margin: 0 0 24px
+        }
+
+        .d-list li {
+            font-size: 14px;
+            color: #cfcfcf;
+            padding: 9px 0 9px 22px;
+            border-bottom: 1px solid var(--line);
+            position: relative
+        }
+
+        .d-list li::before {
+            content: "✦";
+            color: var(--red);
+            position: absolute;
+            left: 0;
+            font-size: 11px;
+            top: 12px
+        }
+
+        .d-side .blk {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .d-side .blk:first-child {
+            padding-top: 0
+        }
+
+        .d-side .blk>div:not(.label) {
+            font-size: 14px;
+            margin-top: 8px
+        }
+
+        .d-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            border: 1px solid var(--red);
+            color: var(--red);
+            padding: 11px 18px;
+            border-radius: 30px;
+            transition: .3s
+        }
+
+        .btn:hover,
+        .btn.solid {
+            background: var(--red);
+            color: #fff
+        }
+
+        .btn.solid:hover {
+            background: transparent;
+            color: var(--red)
+        }
+
+        .d-note {
+            font-size: 12px !important;
+            color: var(--muted) !important;
+            margin: 12px 0 0 !important
+        }
+
+        .d-gallery {
+            columns: 2;
+            column-gap: 16px;
+            margin-bottom: 40px
+        }
+
+        .d-gallery:has(img:only-child) {
+            columns: 1
+        }
+
+        .d-gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 16px;
+            border: 1px solid var(--line);
+            break-inside: avoid
+        }
+
+        .d-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 24px 0 56px;
+            border-top: 1px solid var(--line)
+        }
+
+        .d-nav a {
+            font-size: 12px;
+            max-width: 46%;
+            transition: .3s
+        }
+
+        .d-nav a:hover {
+            color: var(--red)
+        }
+
+        .d-nav small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: .1em;
+            text-transform: uppercase
+        }
+
+        .d-nav a:last-child {
+            text-align: right;
+            margin-left: auto
+        }
+
+        @media (max-width:900px) {
+            .d-body {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 28px 0 36px
+            }
+
+            .d-head {
+                padding-bottom: 24px
+            }
+
+            .d-gallery {
+                columns: 1
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Laptop kecil / tablet landscape */
+        @media (max-width:1280px) {
+            .tag {
+                display: none
+            }
+
+            .mid>div {
+                padding: 32px 24px
+            }
+        }
+
+        /* Tablet */
+        @media (max-width:1100px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .mid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .mid .quote {
+                grid-column: 1 / -1;
+                border-left: 0 !important;
+                border-top: 1px solid var(--line)
+            }
+
+            .contact {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .contact .laptop {
+                grid-column: 1 / -1;
+                max-width: 420px;
+                width: 100%;
+                justify-self: center;
+                transform: none
+            }
+
+            .stats {
+                width: 200px
+            }
+        }
+
+        /* Tablet portrait & HP */
+        @media (max-width:900px) {
+            .hero {
+                min-height: 0
+            }
+
+            .hero::after {
+                background: linear-gradient(180deg, rgba(7, 7, 7, .1) 0%, transparent 25%, rgba(7, 7, 7, .85) 70%, #070707 100%)
+            }
+
             .hero-in {
-                min-height: 900px
+                min-height: max(720px, 100svh);
+                padding-top: 380px;
+                padding-bottom: 36px
+            }
+
+            .photo {
+                left: 50%;
+                width: min(620px, 100vw);
+                height: 72%
+            }
+
+            .desc {
+                max-width: 480px
             }
 
             .stats {
@@ -785,12 +1104,8 @@
                 border: 0
             }
 
-            .tag {
-                display: none
-            }
-
-            .photo {
-                height: 68%
+            .stat strong {
+                min-width: 0
             }
 
             .grid,
@@ -804,7 +1119,152 @@
                 border-top: 1px solid var(--line)
             }
 
+            .mid>div {
+                padding: 32px 4vw
+            }
+
+            .contact {
+                gap: 28px;
+                padding: 40px 4vw
+            }
+
+            .contact p {
+                max-width: 480px
+            }
+
             .laptop {
+                transform: none
+            }
+
+            .grid {
+                gap: 28px
+            }
+        }
+
+        /* HP */
+        @media (max-width:600px) {
+            .top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                padding: 16px 0
+            }
+
+            .hero-in {
+                padding-top: 320px;
+                min-height: max(680px, 100svh)
+            }
+
+            .photo {
+                height: 68%
+            }
+
+            .big {
+                font-size: 21vw
+            }
+
+            .hello {
+                font-size: 38px
+            }
+
+            .role {
+                font-size: 12px
+            }
+
+            .stat strong {
+                font-size: 30px
+            }
+
+            .stat .label {
+                font-size: 10px
+            }
+
+            .p-head {
+                gap: 12px
+            }
+
+            .p-head h2 {
+                font-size: 17px
+            }
+
+            .p-head hr {
+                display: none
+            }
+
+            .p-head {
+                justify-content: space-between
+            }
+
+            .step {
+                grid-template-columns: 28px 40px 1fr;
+                gap: 10px
+            }
+
+            .step .ic {
+                width: 40px;
+                height: 40px
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 6px
+            }
+
+            .row em {
+                text-align: left;
+                white-space: normal
+            }
+
+            .contact h2 {
+                font-size: 26px
+            }
+
+            .c-item {
+                font-size: 12px;
+                gap: 12px
+            }
+
+            .term .bar {
+                padding: 12px 16px;
+                font-size: 12px
+            }
+
+            .term .bar i {
+                width: 11px;
+                height: 11px
+            }
+
+            .term .tb {
+                padding: 22px 18px 28px;
+                min-height: 280px;
+                line-height: 1.7
+            }
+
+            .skip {
+                font-size: 10px;
+                letter-spacing: .15em
+            }
+        }
+
+        @media (max-width:360px) {
+            .stat strong {
+                font-size: 26px
+            }
+
+            .name {
+                font-size: 40px
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            html {
+                scroll-behavior: auto
+            }
+
+            .reveal {
+                transition: none;
+                opacity: 1;
                 transform: none
             }
         }
@@ -812,11 +1272,10 @@
 </head>
 
 <body>
-    <div id="cur"></div>
     <div id="intro">
         <div class="term">
             <div class="bar"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i
-                    style="background:#27c93f"></i><span>siti@portfolio:~$</span></div>
+                    style="background:#27c93f"></i><span>nishoa@portfolio:~$</span></div>
             <div class="tb">
                 <div class="cmd">➜ <span id="typed"></span><span class="caret"></span></div>
                 <div id="out">
@@ -825,130 +1284,144 @@
                     <div class="ln"><b>Specialization:</b> Fullstack Developer | Web &amp; Mobile Development | Robotics
                         &amp; IoT</div>
                     <div class="ln"><b>Status:</b> Open for collaboration</div>
-                    <div class="ln"><b>Links:</b> <a href="https://github.com/kenzuroid.tech" target="_blank"
-                            rel="noopener">GitHub</a> - <a href="https://www.linkedin.com/in/siti-nikmatus-sholihah-399694329/" target="_blank" rel="noopener">LinkedIn</a> - <a
-                            href="mailto:sitinikmatussholihahdivti@gmail.com">Email</a></div>
+                    <div class="ln"><b>Links:</b> <a href="https://github.com/kenzuroid-tech" target="_blank"
+                            rel="noopener">GitHub</a> - <a
+                            href="https://www.linkedin.com/in/siti-nikmatus-sholihah-399694329/" target="_blank"
+                            rel="noopener">LinkedIn</a> - <a href="mailto:sitinikmatussholihahdivti@gmail.com">Email</a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="skip">Press any key or click to skip</div>
     </div>
 
-    <div class="wrap">
-        <div class="top">
-            <div><b>Fullstack Developer</b>Robotics Enthusiast</div>
-            <div>Terbuka untuk kolaborasi <span class="red">✦</span></div>
+    <div id="home">
+        <div class="wrap">
+            <div class="top">
+                <div><b>Fullstack Developer</b>Robotics Enthusiast</div>
+                <div>Terbuka untuk kolaborasi <span class="red">✦</span></div>
+            </div>
         </div>
+
+        <section class="hero">
+            <div class="big">PORTFOLIO</div>
+            <div class="photo">
+                <!-- GANTI dengan foto kamu (PNG tanpa background paling bagus) -->
+                <img src="asset/Fotoku_cut no bg.png" alt="Foto Siti Nikmatus Sholihah"
+                    onerror="this.style.display='none'">
+            </div>
+            <div class="tag"><span>✦</span>Menyelesaikan masalah lewat solusi yang kreatif dan efektif.</div>
+            <div class="wrap hero-in">
+                <div class="hello">Halo, saya</div>
+                <h1 class="name">Siti Nikmatus<br>Sholihah</h1>
+                <div class="role">Fullstack Developer &amp; Robotics</div>
+                <p class="desc">Mahasiswi Teknik Informatika Polinema yang tertarik pada pengembangan perangkat lunak
+                    dan
+                    robotika. Suka mempelajari hal baru, dari web, mobile, hingga IoT.</p>
+                <div class="avail"><i></i>MALANG, JAWA TIMUR</div>
+                <div class="stats">
+                    <div class="stat"><strong data-to="9" data-suffix="">0</strong><span
+                            class="label">Project<br>Dikerjakan</span></div>
+                    <div class="stat"><strong data-to="4" data-suffix="">0</strong><span
+                            class="label">Pengalaman<br>Organisasi</span></div>
+                    <div class="stat"><strong data-to="6" data-suffix="+">0</strong><span
+                            class="label">Bidang<br>Teknologi</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects" id="projects">
+            <div class="wrap">
+                <div class="p-head">
+                    <h2>Selected Projects</h2>
+                    <hr><button id="toggle">Lihat semua project →</button>
+                </div>
+                <div class="grid" id="grid"></div>
+            </div>
+        </section>
+
+        <section class="mid">
+            <div>
+                <h2>Pendidikan &amp; Skills</h2>
+                <div class="label red" style="margin-bottom:14px">Pendidikan</div>
+                <div class="row">
+                    <div>Politeknik Negeri Malang<small>Sarjana Terapan Teknik Informatika</small></div><em>2024 –
+                        2028<br>(perkiraan)</em>
+                </div>
+                <div class="row">
+                    <div>SMK Islam Gondanglegi<small>Teknik Komputer dan Jaringan</small></div><em>2021 – 2024</em>
+                </div>
+                <div class="label red" style="margin:24px 0 14px">Skills</div>
+                <div class="skills">
+                    <span>PHP</span><span>Java</span><span>Python</span><span>JavaScript</span>
+                    <span>HTML / CSS</span><span>Laravel</span><span>REST API</span><span>Flutter</span>
+                    <span>Dart</span><span>MySQL</span><span>PostgreSQL</span><span>Supabase</span>
+                    <span>Git / GitHub</span><span>Vercel</span><span>Linux</span><span>ESP32</span>
+                    <span>Arduino / PlatformIO</span><span>IoT</span><span>OpenCV</span>
+                </div>
+            </div>
+            <div>
+                <h2>Pengalaman Organisasi</h2>
+                <div class="step reveal"><span class="n">01</span><span class="ic">✉</span>
+                    <div><b>Kepala Divisi Humas</b><small>EEPROM Polinema · 2026 – sekarang</small>
+                        <p>Mengoordinasikan kegiatan kehumasan serta komunikasi internal dan eksternal organisasi.</p>
+                    </div>
+                </div>
+                <div class="step reveal"><span class="n">02</span><span class="ic">⚑</span>
+                    <div><b>Manager KRAI</b><small>ABUROBONEMA · 2025 – sekarang</small>
+                        <p>Mengoordinasikan kebutuhan tim, administrasi, dan persiapan Kontes Robot Abu Indonesia.</p>
+                    </div>
+                </div>
+                <div class="step reveal"><span class="n">03</span><span class="ic">✎</span>
+                    <div><b>Anggota Divisi Humas</b><small>Polinema Robotics · 2026 – sekarang</small>
+                        <p>Mendukung publikasi dan penyebaran informasi kegiatan robotika.</p>
+                    </div>
+                </div>
+                <div class="step reveal"><span class="n">04</span><span class="ic">&lt;/&gt;</span>
+                    <div><b>Anggota Divisi Software</b><small>EEPROM Polinema · 2024 – 2026</small>
+                        <p>Mengembangkan software untuk proyek robotika bersama tim mekanik dan elektrik.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="quote">
+                <div>
+                    <div class="q">“</div>
+                    <p>Tertantang dan termotivasi menyelesaikan masalah pemrograman dengan solusi yang kreatif dan
+                        efektif.
+                    </p>
+                    <div class="sign">Nishoa</div>
+                </div>
+                <div class="label" style="color:#fff">Mari berkolaborasi.</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="contact">
+                <div>
+                    <h2>Ayo bekerja<br>sama <span class="red">✦</span></h2>
+                    <p>Terbuka untuk project, kolaborasi, dan kesempatan magang di bidang pengembangan software maupun
+                        robotika.</p>
+                    <a class="cta" href="mailto:sitinikmatussholihahdivti@gmail.com">→ Hubungi saya</a>
+                </div>
+                <div>
+                    <a class="c-item"
+                        href="mailto:sitinikmatussholihahdivti@gmail.com"><i>✉</i>sitinikmatussholihahdivti@gmail.com</a>
+                    <a class="c-item" href="https://github.com/kenzuroid-tech" target="_blank"
+                        rel="noopener"><i>◎</i>github.com/kenzuroid-tech</a>
+                    <a class="c-item" href="tel:+6282331773806"><i>✆</i>0823 3177 3806</a>
+                    <div class="c-item"><i>⌖</i>Malang, Jawa Timur</div>
+                </div>
+                <div class="laptop reveal">Fullstack<br>×<br>Robotics</div>
+            </div>
+        </section>
     </div>
 
-    <section class="hero">
-        <div class="big">PORTFOLIO</div>
-        <div class="photo">
-            <!-- GANTI dengan foto kamu (PNG tanpa background paling bagus) -->
-            <img src="asset/Fotoku_cut no bg.png" alt="Foto Siti Nikmatus Sholihah" onerror="this.style.display='none'">
-        </div>
-        <div class="tag"><span>✦</span>Menyelesaikan masalah lewat solusi yang kreatif dan efektif.</div>
-        <div class="wrap hero-in">
-            <div class="hello">Halo, saya</div>
-            <h1 class="name">Siti Nikmatus<br>Sholihah</h1>
-            <div class="role">Fullstack Developer &amp; Robotics</div>
-            <p class="desc">Mahasiswi Teknik Informatika Polinema yang tertarik pada pengembangan perangkat lunak dan
-                robotika. Suka mempelajari hal baru, dari web, mobile, hingga IoT.</p>
-            <div class="avail"><i></i>MALANG, JAWA TIMUR</div>
-            <div class="stats">
-                <div class="stat"><strong data-to="9" data-suffix="">0</strong><span
-                        class="label">Project<br>Dikerjakan</span></div>
-                <div class="stat"><strong data-to="4" data-suffix="">0</strong><span
-                        class="label">Pengalaman<br>Organisasi</span></div>
-                <div class="stat"><strong data-to="6" data-suffix="+">0</strong><span
-                        class="label">Bidang<br>Teknologi</span></div>
-            </div>
-        </div>
-    </section>
+    <!-- HALAMAN DETAIL PROJECT (diisi lewat JavaScript) -->
+    <main id="detail" hidden>
+        <div class="wrap d-narrow d-top"><a class="d-back" href="#projects">← Kembali ke project</a></div>
+        <div class="wrap d-narrow" id="d-content"></div>
+    </main>
 
-    <section class="projects" id="projects">
-        <div class="wrap">
-            <div class="p-head">
-                <h2>Selected Projects</h2>
-                <hr><button id="toggle">Lihat semua project →</button>
-            </div>
-            <div class="grid" id="grid"></div>
-        </div>
-    </section>
-
-    <section class="mid">
-        <div>
-            <h2>Pendidikan &amp; Skills</h2>
-            <div class="label red" style="margin-bottom:14px">Pendidikan</div>
-            <div class="row">
-                <div>Politeknik Negeri Malang<small>Sarjana Terapan Teknik Informatika</small></div><em>2024 –
-                    2028<br>(perkiraan)</em>
-            </div>
-            <div class="row">
-                <div>SMK Islam Gondanglegi<small>Teknik Komputer dan Jaringan</small></div><em>2021 – 2024</em>
-            </div>
-            <div class="label red" style="margin:24px 0 14px">Skills</div>
-            <div class="skills">
-                <span>PHP</span><span>Java</span><span>Python</span><span>JavaScript</span>
-                <span>HTML / CSS</span><span>Laravel</span><span>REST API</span><span>Flutter</span>
-                <span>Dart</span><span>MySQL</span><span>PostgreSQL</span><span>Supabase</span>
-                <span>Git / GitHub</span><span>Vercel</span><span>Linux</span><span>ESP32</span>
-                <span>Arduino / PlatformIO</span><span>IoT</span><span>OpenCV</span>
-            </div>
-        </div>
-        <div>
-            <h2>Pengalaman Organisasi</h2>
-            <div class="step reveal"><span class="n">01</span><span class="ic">✉</span>
-                <div><b>Kepala Divisi Humas</b><small>EEPROM Polinema · 2026 – sekarang</small>
-                    <p>Mengoordinasikan kegiatan kehumasan serta komunikasi internal dan eksternal organisasi.</p>
-                </div>
-            </div>
-            <div class="step reveal"><span class="n">02</span><span class="ic">⚑</span>
-                <div><b>Manager KRAI</b><small>ABUROBONEMA · 2025 – sekarang</small>
-                    <p>Mengoordinasikan kebutuhan tim, administrasi, dan persiapan Kontes Robot Abu Indonesia.</p>
-                </div>
-            </div>
-            <div class="step reveal"><span class="n">03</span><span class="ic">✎</span>
-                <div><b>Anggota Divisi Humas</b><small>Polinema Robotics · 2026 – sekarang</small>
-                    <p>Mendukung publikasi dan penyebaran informasi kegiatan robotika.</p>
-                </div>
-            </div>
-            <div class="step reveal"><span class="n">04</span><span class="ic">&lt;/&gt;</span>
-                <div><b>Anggota Divisi Software</b><small>EEPROM Polinema · 2024 – 2026</small>
-                    <p>Mengembangkan software untuk proyek robotika bersama tim mekanik dan elektrik.</p>
-                </div>
-            </div>
-        </div>
-        <div class="quote">
-            <div>
-                <div class="q">“</div>
-                <p>Tertantang dan termotivasi menyelesaikan masalah pemrograman dengan solusi yang kreatif dan efektif.
-                </p>
-                <div class="sign">Nishoa</div>
-            </div>
-            <div class="label" style="color:#fff">Mari berkolaborasi.</div>
-        </div>
-    </section>
-
-    <section>
-        <div class="wrap contact">
-            <div>
-                <h2>Ayo bekerja<br>sama <span class="red">✦</span></h2>
-                <p>Terbuka untuk project, kolaborasi, dan kesempatan magang di bidang pengembangan software maupun
-                    robotika.</p>
-                <a class="cta" href="mailto:sitinikmatussholihahdivti@gmail.com">→ Hubungi saya</a>
-            </div>
-            <div>
-                <a class="c-item"
-                    href="mailto:sitinikmatussholihahdivti@gmail.com"><i>✉</i>sitinikmatussholihahdivti@gmail.com</a>
-                <a class="c-item" href="https://github.com/kenzuroid.tech" target="_blank"
-                    rel="noopener"><i>◎</i>github.com/kenzuroid.tech</a>
-                <a class="c-item" href="tel:+6282331773806"><i>✆</i>0823 3177 3806</a>
-                <div class="c-item"><i>⌖</i>Malang, Jawa Timur</div>
-            </div>
-            <div class="laptop reveal">Fullstack<br>×<br>Robotics</div>
-        </div>
-    </section>
     <footer>© 2026 Siti Nikmatus Sholihah. All rights reserved.</footer>
 
     <script>
@@ -963,11 +1436,39 @@
             { t: "Website Tracker Kegiatan Harian", r: "Fullstack Developer", d: "Website untuk mencatat dan memantau aktivitas sehari-hari secara terstruktur.", s: ["HTML", "CSS", "JS"], bg: "linear-gradient(135deg,#0d0d0d,#2a0709)", l: "#" },
             { t: "Aplikasi Reminder Tugas & Catatan", r: "Mobile Developer", d: "Aplikasi Flutter untuk mencatat tugas dan menyimpan catatan.", s: ["Flutter", "Dart"], bg: "linear-gradient(135deg,#140808,#5c0a0e)", l: "#" }
         ];
+        // Foto project (urutan sama dengan daftar di atas). Taruh file di folder asset/
+        // dan sesuaikan nama file-nya. Kalau file tidak ditemukan, kartu tetap tampil dengan warna gradasi.
+        const shots = [
+            "asset/e-voting.png", // Website Pemilihan Ketua Umum EEPROM
+            "asset/project-2.jpg", // POS Tahu Bakso Morojoyo
+            "asset/", // Robot Transporter
+            "asset/eeprom polinema web.png", // Website Profil EEPROM Polinema
+            "asset/sop humas.png", // Website SOP Humas EEPROM
+            "asset/project-6.jpg", // Website POS & Jual Beli Keripik
+            "asset/project-7.jpg", // Website Tracker Kegiatan Harian
+        ];
+        // Detail tiap project (urutan sama dengan daftar project di atas).
+        // long   : paragraf deskripsi (boleh lebih dari satu)
+        // fitur  : daftar fitur utama (boleh dikosongkan)
+        // demo   : link website/aplikasi yang sudah di-deploy (kosongkan "" kalau belum)
+        // repo   : link GitHub (kosongkan "" kalau tidak ada)
+        // gallery: foto tambahan, mis. ["asset/project-1-b.jpg"] (boleh dikosongkan)
+        const extra = [
+            { long: ["Website untuk mengelola proses pemilihan Ketua Umum EEPROM. Saya mengerjakan sisi frontend, backend, dan integrasi database untuk menyimpan serta mengelola data pemilihan."], fitur: [], demo: "https://eeprompolinema.my.id/voting/auth/select-role.html", repo: "", gallery: [] },
+            { long: ["Sistem Point of Sale untuk mencatat transaksi penjualan Warung Tahu Bakso Morojoyo. Di project ini saya juga mengeksplorasi pengenalan wajah berbantuan AI."], fitur: [], demo: "", repo: "", gallery: [] },
+            { long: ["Robot transporter dengan logika program dan pengendalian pergerakan yang terintegrasi dengan perangkat keras. Saya bertanggung jawab di bagian software."], fitur: [], demo: "", repo: "", gallery: ["/asset/1.jpeg", "/asset/5.jpeg", "/asset/9.jpeg", "/asset/19.jpeg", "/asset/22.jpeg", "/asset/24.jpeg"] },
+            { long: ["Website profil komunitas robotika EEPROM Polinema untuk menyajikan informasi organisasi dan kegiatannya."], fitur: [], demo: "https://eeprompolinema.my.id", repo: "", gallery: [] },
+            { long: ["Website dokumentasi SOP dan alur kerja Divisi Humas EEPROM, dilengkapi integrasi database."], fitur: [], demo: "https://humaseeprom.my.id/index.html", repo: "", gallery: [] },
+            { long: ["Website penjualan keripik dengan konsep marketplace, dibangun dengan PHP menggunakan pendekatan RAD."], fitur: [], demo: "", repo: "", gallery: [] },
+            { long: ["Website untuk mencatat dan memantau aktivitas sehari-hari secara terstruktur."], fitur: [], demo: "", repo: "", gallery: [] },
+        ];
+
         const grid = document.getElementById('grid');
         projects.forEach((p, i) => {
             const a = document.createElement('a');
-            a.href = p.l; a.className = 'card reveal' + (i > 2 ? ' hide' : '');
-            a.innerHTML = `<div class="thumb" style="background:${p.bg}"><h4>${p.t}</h4>
+            a.href = '#project-' + (i + 1); a.className = 'card reveal' + (i > 2 ? ' hide' : '');
+            const img = shots[i] ? `<img class="shot" src="${shots[i]}" alt="Tampilan ${p.t}" loading="lazy" onload="this.parentNode.classList.add('has-shot')" onerror="this.remove()">` : '';
+            a.innerHTML = `<div class="thumb" style="background:${p.bg}">${img}<h4>${p.t}</h4>
     <div class="tech">${p.s.map(x => `<span>${x}</span>`).join('')}</div></div>
     <div class="meta"><span class="num">${String(i + 1).padStart(2, '0')}</span>
     <div>${p.t}<small>${p.r}</small></div><span>→</span></div>
@@ -1005,6 +1506,8 @@
         let done = false; const timers = [];
         const later = (fn, ms) => timers.push(setTimeout(fn, ms));
         document.body.style.overflow = 'hidden';
+        // Teks skip menyesuaikan perangkat sentuh
+        if (matchMedia('(pointer:coarse)').matches) document.querySelector('.skip').textContent = 'Tap untuk melewati';
         function closeIntro() {
             if (done) return; done = true;
             timers.forEach(clearTimeout);
@@ -1020,15 +1523,59 @@
         intro.addEventListener('click', closeIntro);
         intro.querySelectorAll('a').forEach(a => a.addEventListener('click', e => e.stopPropagation()));
 
-        // Custom cursor
-        if (matchMedia('(pointer:fine)').matches) {
-            const c = document.getElementById('cur');
-            document.documentElement.classList.add('has-cur');
-            let x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y;
-            addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; });
-            addEventListener('mouseover', e => c.classList.toggle('grow', !!e.target.closest('a,button')));
-            (function loop() { cx += (x - cx) * .18; cy += (y - cy) * .18; c.style.left = cx + 'px'; c.style.top = cy + 'px'; requestAnimationFrame(loop); })();
+        // Halaman detail project (routing lewat hash: #project-1, #project-2, ...)
+        const home = document.getElementById('home'), detail = document.getElementById('detail'), dc = document.getElementById('d-content');
+        const baseTitle = document.title;
+        function renderDetail(i) {
+            const p = projects[i], x = extra[i] || {}, n = projects.length;
+            const paras = (x.long && x.long.length ? x.long : [p.d]).map(t => `<p>${t}</p>`).join('');
+            const fitur = x.fitur && x.fitur.length ? `<h3 class="label red">Fitur utama</h3><ul class="d-list">${x.fitur.map(f => `<li>${f}</li>`).join('')}</ul>` : '';
+            const gal = x.gallery && x.gallery.length ? `<div class="d-gallery">${x.gallery.map(g => `<img src="${g}" alt="Tampilan ${p.t}" loading="lazy" onerror="this.remove()">`).join('')}</div>` : '';
+            const links = [
+                x.demo ? `<a class="btn solid" href="${x.demo}" target="_blank" rel="noopener">Lihat Live Demo ↗</a>` : '',
+                x.repo ? `<a class="btn" href="${x.repo}" target="_blank" rel="noopener">GitHub ↗</a>` : ''
+            ].join('');
+            const status = x.demo ? 'Sudah di-deploy' : 'Belum di-deploy';
+            const prev = projects[(i - 1 + n) % n], next = projects[(i + 1) % n];
+            const frame = shots[i] ? `<div class="d-frame"><div class="fbar"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i></div><img src="${shots[i]}" alt="Tampilan ${p.t}" onerror="this.parentNode.remove()"></div>` : '';
+            dc.innerHTML = `
+                <div class="d-head">
+                    <div><span class="d-num">PROJECT ${String(i + 1).padStart(2, '0')}</span><h1>${p.t}</h1>
+                        <div class="d-role">${p.r}</div></div>
+                    ${links ? `<div class="d-links">${links}</div>` : ''}
+                </div>
+                ${frame}
+                <div class="d-body">
+                    <div><h3 class="label red">Deskripsi</h3>${paras}${fitur}${gal}</div>
+                    <aside class="d-side">
+                        <div class="blk"><div class="label">Peran</div><div>${p.r}</div></div>
+                        <div class="blk"><div class="label">Teknologi</div><div class="skills">${p.s.map(s => `<span>${s}</span>`).join('')}</div></div>
+                        <div class="blk"><div class="label">Status</div><div>${status}</div></div>
+                    </aside>
+                </div>
+                <div class="d-nav">
+                    <a href="#project-${(i - 1 + n) % n + 1}"><small>← Sebelumnya</small>${prev.t}</a>
+                    <a href="#project-${(i + 1) % n + 1}"><small>Berikutnya →</small>${next.t}</a>
+                </div>`;
         }
+        function route() {
+            const m = location.hash.match(/^#project-(\d+)$/);
+            if (m && projects[m[1] - 1]) {
+                renderDetail(m[1] - 1);
+                home.hidden = true; detail.hidden = false;
+                document.title = projects[m[1] - 1].t + ' – Siti Nikmatus Sholihah';
+                scrollTo(0, 0);
+            } else {
+                const wasDetail = !detail.hidden;
+                detail.hidden = true; home.hidden = false;
+                document.title = baseTitle;
+                if (wasDetail) { const t = document.getElementById('projects'); if (t) t.scrollIntoView({ behavior: 'instant' }); }
+            }
+        }
+        addEventListener('hashchange', route);
+        route();
+        // Kalau langsung membuka link detail project, lewati intro terminal
+        if (/^#project-/.test(location.hash)) closeIntro();
 
         // Parallax PORTFOLIO
         const big = document.querySelector('.big');
