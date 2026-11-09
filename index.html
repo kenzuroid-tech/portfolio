@@ -35,7 +35,9 @@
             color: var(--text);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
         }
 
         img {
@@ -44,7 +46,13 @@
 
         a {
             color: inherit;
-            text-decoration: none
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        button, .btn {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation
         }
 
         section {
@@ -1276,6 +1284,294 @@
             }
         }
 
+        /* ===== RESPONSIVE IMPROVEMENTS FOR MOBILE ===== */
+        @media (max-width: 768px) {
+            /* General spacing */
+            .wrap {
+                padding: 0 5vw
+            }
+
+            /* Hero adjustments */
+            .big {
+                font-size: 18vw;
+                letter-spacing: -0.02em
+            }
+
+            .hello {
+                font-size: clamp(32px, 8vw, 42px)
+            }
+
+            .desc {
+                font-size: 15px;
+                line-height: 1.6
+            }
+
+            /* Project cards */
+            .card {
+                border-radius: 12px
+            }
+
+            .card h4 {
+                font-size: 16px;
+                line-height: 1.3
+            }
+
+            .tech {
+                gap: 6px;
+                flex-wrap: wrap
+            }
+
+            .tech span {
+                font-size: 9px;
+                padding: 5px 10px
+            }
+
+            /* Detail page */
+            .d-narrow {
+                max-width: 100%;
+                padding: 0 5vw
+            }
+
+            .d-top {
+                padding: 20px 0
+            }
+
+            .d-back {
+                font-size: 13px
+            }
+
+            .d-head h1 {
+                font-size: 28px;
+                line-height: 1.2;
+                margin-bottom: 12px
+            }
+
+            .d-meta {
+                font-size: 12px;
+                gap: 8px;
+                flex-wrap: wrap
+            }
+
+            .d-body {
+                padding: 28px 0 36px;
+                gap: 32px
+            }
+
+            .d-body h3 {
+                font-size: 12px;
+                margin-bottom: 14px
+            }
+
+            .d-body p {
+                font-size: 15px;
+                line-height: 1.7;
+                margin-bottom: 16px
+            }
+
+            .d-list li {
+                font-size: 14px;
+                padding: 10px 0 10px 24px;
+                line-height: 1.5
+            }
+
+            .d-list li::before {
+                font-size: 10px;
+                top: 13px
+            }
+
+            .d-frame {
+                border-radius: 10px
+            }
+
+            .d-side .blk {
+                padding: 16px 0
+            }
+
+            .d-side .blk>div:not(.label) {
+                font-size: 14px;
+                margin-top: 8px
+            }
+
+            .d-links {
+                flex-direction: column;
+                gap: 12px
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 13px 20px;
+                font-size: 12px
+            }
+
+            /* Gallery */
+            .d-gallery {
+                columns: 1;
+                gap: 14px
+            }
+
+            .d-gallery img {
+                margin-bottom: 14px;
+                border-radius: 6px
+            }
+
+            /* Navigation */
+            .d-nav {
+                padding: 20px 0 40px;
+                gap: 12px
+            }
+
+            .d-nav a {
+                font-size: 11px;
+                max-width: 48%
+            }
+
+            /* Mid section */
+            .mid h2 {
+                font-size: 18px;
+                margin-bottom: 20px
+            }
+
+            .row {
+                font-size: 13px
+            }
+
+            .row small {
+                font-size: 11px
+            }
+
+            /* Skills */
+            .skills span {
+                font-size: 9px;
+                padding: 6px 10px
+            }
+
+            /* Steps */
+            .step .num {
+                font-size: 16px
+            }
+
+            .step .ic {
+                font-size: 18px
+            }
+
+            .step h4 {
+                font-size: 14px
+            }
+
+            .step p {
+                font-size: 12px
+            }
+
+            /* Contact */
+            .contact h2 {
+                font-size: 24px
+            }
+
+            .c-item {
+                font-size: 13px
+            }
+
+            /* Laptop mockup */
+            .laptop {
+                max-width: 100%;
+                margin-top: 24px
+            }
+
+            /* Terminal intro */
+            .term {
+                max-width: 100%;
+                width: 95vw;
+                margin: 0 2.5vw
+            }
+
+            .term .bar {
+                padding: 10px 14px;
+                font-size: 11px
+            }
+
+            .term .bar i {
+                width: 10px;
+                height: 10px
+            }
+
+            .term .tb {
+                padding: 18px 14px 24px;
+                font-size: 13px;
+                min-height: 250px
+            }
+
+            .prompt {
+                font-size: 14px
+            }
+
+            .out {
+                font-size: 12px
+            }
+
+            .skip {
+                font-size: 9px;
+                bottom: 16px
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small phones */
+            .hero-in {
+                padding-top: 280px;
+                min-height: max(640px, 100svh)
+            }
+
+            .photo {
+                height: 64%
+            }
+
+            .hello {
+                font-size: 32px
+            }
+
+            .desc {
+                font-size: 14px
+            }
+
+            .stat strong {
+                font-size: 28px
+            }
+
+            .d-head h1 {
+                font-size: 24px
+            }
+
+            .d-body p {
+                font-size: 14px
+            }
+
+            .btn {
+                font-size: 11px;
+                padding: 12px 18px
+            }
+
+            .contact h2 {
+                font-size: 22px
+            }
+        }
+
+        /* Landscape orientation fix */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero-in {
+                padding-top: 200px;
+                min-height: 90vh
+            }
+
+            .photo {
+                height: 80%
+            }
+
+            .stats {
+                margin-top: 20px
+            }
+        }
+
         @media (prefers-reduced-motion:reduce) {
 
             html {
@@ -1607,7 +1903,7 @@
         const projects = [
             { t: "Website Pemilihan Ketua Umum EEPROM", r: "Fullstack Developer", d: "Frontend, backend, dan integrasi database untuk pengelolaan data pemilihan.", s: ["HTML", "CSS", "JS", "PostgreSQL", "Supabase"], bg: "linear-gradient(135deg,#150808,#6a0d12)", l: "#" },
             { t: "POS Tahu Bakso Morojoyo PBL", r: "AI Face Detection Developer", d: "Sistem Point of Sale untuk transaksi penjualan, dengan eksplorasi pengenalan wajah berbantuan AI.", s: ["Laravel", "Filament", "MySQL", "AI"], bg: "linear-gradient(135deg,#111,#2a0709)", l: "#" },
-            { t: "Robot Transporter", r: "Robotics Software Developer", d: "Logika program dan pengendalian pergerakan robot, terintegrasi dengan perangkat keras.", s: ["ESP32", "C++"], bg: "linear-gradient(135deg,#0c0c0c,#4a0508)", l: "#" },
+            { t: "Robot Transporter", r: "Robotics Software Developer", d: "Logika program dan pengendalian pergerakan robot, terintegrasi dengan perangkat keras.", s: ["ESP32", "C++", "Arduino IDE"], bg: "linear-gradient(135deg,#0c0c0c,#4a0508)", l: "#" },
             { t: "Website Profil EEPROM Polinema", r: "Fullstack Developer", d: "Website profil komunitas robotika untuk menyajikan informasi organisasi dan kegiatannya.", s: ["HTML", "CSS", "JS"], bg: "linear-gradient(135deg,#1a0a0a,#7a0f15)", l: "#" },
             {
                 t: "Website SOP Humas EEPROM", r: "Fullstack Developer", d: "Dokumentasi SOP dan alur kerja Divisi Humas, lengkap dengan integrasi database.", s: ["PWA", "JavaScript", "PostgreSQL", "Supabase", "GitHub Actions", "Service Worker", "Push Notifications"]
@@ -1630,7 +1926,7 @@
         const shots = [
             "asset/e-voting.png", // Website Pemilihan Ketua Umum EEPROM
             "asset/project-2.jpg", // POS Tahu Bakso Morojoyo
-            "asset/", // Robot Transporter
+            "asset/1.jpeg", // Robot Transporter
             "asset/eeprom polinema web.png", // Website Profil EEPROM Polinema
             "asset/sop humas.png", // Website SOP Humas EEPROM
             "asset/An-Az Jaya/2.png",
@@ -1689,6 +1985,29 @@
                         '/asset/An-Az Jaya/Tampilan Proses Pesanan.png',
                         '/asset/An-Az Jaya/Tampilan Riwayat Transaksi.png',
                         '/asset/An-Az Jaya/Tampilan Detail Pesanan.png']
+            },
+            {
+                long: ["Website untuk mencatat dan memantau aktivitas laboratorium Software Engineering secara terstruktur dan terorganisir. Platform ini dirancang untuk memfasilitasi pengelolaan kegiatan lab, mulai dari sistem recruitment talent baru, manajemen blog untuk berbagi informasi dan artikel teknis, hingga dashboard multi-role yang dapat diakses oleh Admin, Dosen, dan Talent dengan hak akses yang berbeda. Sebagai Front End Developer, saya bertanggung jawab mengembangkan antarmuka yang responsif dan user-friendly menggunakan HTML, CSS, JavaScript, dan Bootstrap, memastikan pengalaman pengguna yang optimal di berbagai perangkat. Website ini menjadi solusi digital untuk meningkatkan efisiensi operasional laboratorium dan memudahkan komunikasi antar anggota lab."
+                ],
+                fitur: [
+                    "Multi-role dashboard (Admin, Dosen, Talent)",
+                    "Sistem recruitment talent",
+                    "Blog management system",
+                    "Responsive design untuk semua device",
+                    "User authentication & authorization",
+                    "Activity tracking & reporting"
+                ],
+                demo: "https://nishoa.vercel.app/",
+                repo: "",
+                gallery: [
+                    '/asset/Sekawan-lab/1.png',
+                    '/asset/Sekawan-lab/2.png',
+                    '/asset/Sekawan-lab/3.png',
+                    '/asset/Sekawan-lab/4.png',
+                    '/asset/Sekawan-lab/5.png',
+                    '/asset/Sekawan-lab/6.png',
+                    '/asset/Sekawan-lab/7.png'
+                ]
             },
             { long: ["Website untuk mencatat dan memantau aktivitas sehari-hari secara terstruktur."], fitur: [], demo: "", repo: "", gallery: [] },
         ];
