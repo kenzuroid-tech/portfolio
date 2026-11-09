@@ -50,7 +50,8 @@
             -webkit-tap-highlight-color: transparent
         }
 
-        button, .btn {
+        button,
+        .btn {
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation
         }
@@ -1103,14 +1104,16 @@
 
             .hero-in {
                 min-height: max(720px, 100svh);
-                padding-top: 380px;
+                padding-top: 50vh;
                 padding-bottom: 36px
             }
 
             .photo {
                 left: 50%;
                 width: min(620px, 100vw);
-                height: 72%
+                height: 85%;
+                top: 0;
+                bottom: auto
             }
 
             .desc {
@@ -1179,12 +1182,14 @@
             }
 
             .hero-in {
-                padding-top: 320px;
-                min-height: max(680px, 100svh)
+                padding-top: 55vh;
+                min-height: 100vh;
+                padding-bottom: 8vh
             }
 
             .photo {
-                height: 68%
+                height: 68vh;
+                width: 92vw
             }
 
             .big {
@@ -1286,15 +1291,60 @@
 
         /* ===== RESPONSIVE IMPROVEMENTS FOR MOBILE ===== */
         @media (max-width: 768px) {
+
             /* General spacing */
             .wrap {
                 padding: 0 5vw
             }
 
+            /* Hero photo fix */
+            .hero {
+                min-height: 100vh
+            }
+
+            .photo {
+                position: absolute;
+                top: 0;
+                bottom: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 70vh;
+                width: 90vw;
+                max-width: 600px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                z-index: 2
+            }
+
+            .photo img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+                object-position: bottom center
+            }
+
+            .hero::after {
+                background: linear-gradient(180deg, transparent 0%, transparent 40%, rgba(7, 7, 7, 0.7) 60%, #070707 85%)
+            }
+
             /* Hero adjustments */
+            .hero-in {
+                position: relative;
+                z-index: 3;
+                padding-top: 55vh;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding-bottom: 10vh
+            }
+
             .big {
                 font-size: 18vw;
-                letter-spacing: -0.02em
+                letter-spacing: -0.02em;
+                position: relative;
+                z-index: 1
             }
 
             .hello {
@@ -1516,14 +1566,17 @@
         }
 
         @media (max-width: 480px) {
+
             /* Extra small phones */
-            .hero-in {
-                padding-top: 280px;
-                min-height: max(640px, 100svh)
+            .photo {
+                height: 65vh;
+                width: 95vw
             }
 
-            .photo {
-                height: 64%
+            .hero-in {
+                padding-top: 52vh;
+                min-height: 100vh;
+                padding-bottom: 8vh
             }
 
             .hello {
@@ -1559,12 +1612,13 @@
         /* Landscape orientation fix */
         @media (max-height: 600px) and (orientation: landscape) {
             .hero-in {
-                padding-top: 200px;
+                padding-top: 35vh;
                 min-height: 90vh
             }
 
             .photo {
-                height: 80%
+                height: 90%;
+                top: 5%
             }
 
             .stats {
@@ -1902,7 +1956,7 @@
         // Data project — edit/tambah di sini (link: isi URL demo/GitHub kalau ada)
         const projects = [
             { t: "Website Pemilihan Ketua Umum EEPROM", r: "Fullstack Developer", d: "Frontend, backend, dan integrasi database untuk pengelolaan data pemilihan.", s: ["HTML", "CSS", "JS", "PostgreSQL", "Supabase"], bg: "linear-gradient(135deg,#150808,#6a0d12)", l: "#" },
-            { t: "POS Tahu Bakso Morojoyo PBL", r: "AI Face Detection Developer", d: "Sistem Point of Sale untuk transaksi penjualan, dengan eksplorasi pengenalan wajah berbantuan AI.", s: ["Laravel", "Filament", "MySQL", "AI"], bg: "linear-gradient(135deg,#111,#2a0709)", l: "#" },
+            { t: "POS Tahu Bakso Morojoyo PBL", r: "AI Face Detection Developer", d: "Sistem Point of Sale untuk transaksi penjualan, dengan eksplorasi pengenalan wajah berbantuan AI.", s: ["Laravel", "Filament", "Bootstrap", "MySQL", "AI"], bg: "linear-gradient(135deg,#111,#2a0709)", l: "#" },
             { t: "Robot Transporter", r: "Robotics Software Developer", d: "Logika program dan pengendalian pergerakan robot, terintegrasi dengan perangkat keras.", s: ["ESP32", "C++", "Arduino IDE"], bg: "linear-gradient(135deg,#0c0c0c,#4a0508)", l: "#" },
             { t: "Website Profil EEPROM Polinema", r: "Fullstack Developer", d: "Website profil komunitas robotika untuk menyajikan informasi organisasi dan kegiatannya.", s: ["HTML", "CSS", "JS"], bg: "linear-gradient(135deg,#1a0a0a,#7a0f15)", l: "#" },
             {
@@ -1912,7 +1966,7 @@
             { t: "Website POS & Jual Beli Keripik An-Az Jaya", r: "Fullstack Developer", d: "Website penjualan keripik dengan konsep marketplace, dibangun dengan PHP.", s: ["PHP", "RAD"], bg: "linear-gradient(135deg,#151010,#6a0d12)", l: "#" },
             {
                 t: "Website Laboratorium Software Engineering",
-                r: "Front End Developer",
+                r: "Frontend Developer",
                 d: "Mengembangkan tampilan antarmuka website laboratorium dengan desain responsif dan user-friendly untuk memudahkan pengelolaan aktivitas lab secara digital. Fitur utama: multi-role dashboard (Admin, Dosen, Talent), blog management, dan recruitment system.",
                 s: ["HTML", "CSS", "JavaScript", "Bootstrap"],
                 bg: "linear-gradient(135deg,#0d0d0d,#2a0709)",
@@ -1925,7 +1979,7 @@
         // dan sesuaikan nama file-nya. Kalau file tidak ditemukan, kartu tetap tampil dengan warna gradasi.
         const shots = [
             "asset/e-voting.png", // Website Pemilihan Ketua Umum EEPROM
-            "asset/project-2.jpg", // POS Tahu Bakso Morojoyo
+            "asset/Tahu Bakso/1.png", // POS Tahu Bakso Morojoyo
             "asset/1.jpeg", // Robot Transporter
             "asset/eeprom polinema web.png", // Website Profil EEPROM Polinema
             "asset/sop humas.png", // Website SOP Humas EEPROM
@@ -1940,10 +1994,82 @@
         // repo   : link GitHub (kosongkan "" kalau tidak ada)
         // gallery: foto tambahan, mis. ["asset/project-1-b.jpg"] (boleh dikosongkan)
         const extra = [
-            { long: ["Website untuk mengelola proses pemilihan Ketua Umum EEPROM. Saya mengerjakan sisi frontend, backend, dan integrasi database untuk menyimpan serta mengelola data pemilihan."], fitur: [], demo: "https://eeprompolinema.my.id/voting/auth/select-role.html", repo: "", gallery: [] },
-            { long: ["Sistem Point of Sale untuk mencatat transaksi penjualan Warung Tahu Bakso Morojoyo. Di project ini saya juga mengeksplorasi pengenalan wajah berbantuan AI."], fitur: [], demo: "", repo: "", gallery: [] },
-            { long: ["Robot transporter dengan logika program dan pengendalian pergerakan yang terintegrasi dengan perangkat keras. Saya bertanggung jawab di bagian software."], fitur: [], demo: "", repo: "", gallery: ["/asset/1.jpeg", "/asset/5.jpeg", "/asset/9.jpeg", "/asset/19.jpeg", "/asset/22.jpeg", "/asset/24.jpeg"] },
-            { long: ["Website profil komunitas robotika EEPROM Polinema untuk menyajikan informasi organisasi dan kegiatannya."], fitur: [], demo: "https://eeprompolinema.my.id", repo: "", gallery: [] },
+            {
+                long: [
+                    "Platform e-voting berbasis web untuk mengelola proses pemilihan Ketua Umum EEPROM Politeknik Negeri Malang secara digital, transparan, dan efisien. Sistem ini menggantikan metode pemilihan konvensional dengan solusi online yang modern dan secure.",
+                    "Sebagai Fullstack Developer, saya mengembangkan seluruh aspek sistem mulai dari frontend interface menggunakan HTML, CSS, dan JavaScript untuk memberikan pengalaman voting yang smooth dan intuitif, backend logic untuk memproses data pemilihan, hingga database design untuk menyimpan data pemilih dan hasil voting dengan aman.",
+                    "Website ini dilengkapi dengan sistem autentikasi multi-role, real-time counting, dan dashboard monitoring yang memastikan proses pemilihan berjalan fair dan dapat dipertanggungjawabkan."
+                ],
+                fitur: [
+                    "Multi-role authentication system",
+                    "Real-time vote counting",
+                    "Secure voting mechanism",
+                    "Dashboard monitoring untuk admin",
+                    "One person, one vote verification",
+                    "Responsive interface",
+                    "Hasil pemilihan dengan visualisasi data",
+                    "Manajemen kandidat dan periode voting"
+                ],
+                demo: "https://eeprompolinema.my.id/voting/auth/select-role.html",
+                repo: "",
+                gallery: []
+            },
+            {
+                long: [
+                    "Sistem Point of Sale untuk Warung Tahu Bakso Morojoyo yang menggabungkan fitur manajemen transaksi dengan teknologi AI untuk absensi karyawan. Dibangun menggunakan Laravel dan Filament admin panel, sistem ini menawarkan solusi terintegrasi untuk operasional warung.",
+                    "Sebagai AI Face Detection Developer, saya mengimplementasikan fitur face recognition untuk sistem absensi karyawan yang memungkinkan pencatatan kehadiran secara otomatis dan akurat. Karyawan dapat melakukan clock-in dan clock-out hanya dengan memindai wajah mereka di depan kamera, menghilangkan kebutuhan akan kartu absensi fisik atau fingerprint scanner.",
+                    "Sistem dilengkapi dengan fitur POS lengkap untuk pencatatan penjualan, manajemen inventori, dan laporan real-time yang memudahkan pemilik dalam monitoring bisnis."
+                ],
+                fitur: [
+                    "Point of Sale system",
+                    "Face recognition untuk absensi karyawan",
+                    "Clock-in/clock-out otomatis",
+                    "Manajemen transaksi penjualan",
+                    "Manajemen inventori produk",
+                    "Laporan kehadiran karyawan",
+                    "Dashboard analytics dan reporting",
+                    "Multi-role user management"
+                ],
+                demo: "",
+                repo: "",
+                gallery: []
+            },
+            {
+                long: [
+                    "Robot Transporter untuk kompetisi robotika di Universitas Jember yang dilengkapi dengan mechanical gripper (capit lifter) untuk memindahkan bola dan objek di arena. Robot ini menggunakan PlayStation 4 controller sebagai interface kontrol untuk memberikan handling yang presisi dan responsif.",
+                    "Sebagai Software Developer, saya mengembangkan sistem kontrol yang mengintegrasikan PS4 controller dengan robot, meliputi mapping button ke fungsi pergerakan dan operasi gripper, implementasi logika untuk koordinasi motor, serta optimasi responsiveness untuk manuver cepat dan handling objek yang stabil selama kompetisi."
+                ],
+                fitur: [
+                    "PS4 controller integration",
+                    "Mechanical gripper untuk handling objek",
+                    "Wireless control via Bluetooth",
+                    "Multi-direction movement",
+                    "Real-time motor response",
+                    "Speed adjustment",
+                    "Gripper automation"
+                ],
+                demo: "",
+                repo: "",
+                gallery: ["/asset/1.jpeg", "/asset/5.jpeg", "/asset/9.jpeg", "/asset/19.jpeg", "/asset/22.jpeg", "/asset/24.jpeg"]
+            },
+            {
+                long: [
+                    "Website profil komunitas robotika EEPROM Politeknik Negeri Malang yang menyajikan informasi lengkap tentang organisasi, kegiatan, dan prestasi di bidang robotika. Platform ini menjadi media utama untuk memperkenalkan EEPROM kepada publik dan calon anggota baru.",
+                    "Website menampilkan profil organisasi, struktur divisi, portfolio project robotika, dokumentasi kegiatan dan kompetisi, serta informasi rekrutmen. Dirancang dengan interface modern dan responsive untuk memberikan pengalaman browsing yang optimal di semua perangkat."
+                ],
+                fitur: [
+                    "Profil lengkap organisasi EEPROM",
+                    "Portfolio project robotika",
+                    "Galeri dokumentasi kegiatan",
+                    "Informasi divisi dan struktur",
+                    "Blog dan artikel",
+                    "Informasi recruitment",
+                    "Responsive design"
+                ],
+                demo: "https://eeprompolinema.my.id",
+                repo: "",
+                gallery: []
+            },
             {
                 long: ["Progressive Web App (PWA) untuk dokumentasi dan manajemen Standard Operating Procedure (SOP) Divisi Humas EEPROM. Dibangun dengan arsitektur modern yang memanfaatkan PostgreSQL dan Supabase sebagai backend infrastructure, platform ini menyediakan akses real-time terhadap dokumen SOP dan alur kerja organisasi. Sistem notifikasi push terintegrasi dengan GitHub Actions untuk mengirimkan update otomatis kepada tim mengenai perubahan dokumen atau workflow baru. Dengan kemampuan offline-first dan progressive enhancement, aplikasi ini dapat diakses kapan saja bahkan tanpa koneksi internet, menjadikannya solusi ideal untuk manajemen dokumentasi organisasi yang efisien dan modern."
                 ], fitur: [], demo: "https://humaseeprom.my.id/index.html", repo: "", gallery: [
@@ -1987,7 +2113,7 @@
                         '/asset/An-Az Jaya/Tampilan Detail Pesanan.png']
             },
             {
-                long: ["Website untuk mencatat dan memantau aktivitas laboratorium Software Engineering secara terstruktur dan terorganisir. Platform ini dirancang untuk memfasilitasi pengelolaan kegiatan lab, mulai dari sistem recruitment talent baru, manajemen blog untuk berbagi informasi dan artikel teknis, hingga dashboard multi-role yang dapat diakses oleh Admin, Dosen, dan Talent dengan hak akses yang berbeda. Sebagai Front End Developer, saya bertanggung jawab mengembangkan antarmuka yang responsif dan user-friendly menggunakan HTML, CSS, JavaScript, dan Bootstrap, memastikan pengalaman pengguna yang optimal di berbagai perangkat. Website ini menjadi solusi digital untuk meningkatkan efisiensi operasional laboratorium dan memudahkan komunikasi antar anggota lab."
+                long: ["Website untuk mencatat dan memantau aktivitas laboratorium Software Engineering secara terstruktur dan terorganisir. Platform ini dirancang untuk memfasilitasi pengelolaan kegiatan lab, mulai dari sistem recruitment talent baru, manajemen blog untuk berbagi informasi dan artikel teknis, hingga dashboard multi-role yang dapat diakses oleh Admin, Dosen, dan Talent dengan hak akses yang berbeda. Sebagai Frontend Developer, saya bertanggung jawab mengembangkan antarmuka yang responsif dan user-friendly menggunakan HTML, CSS, JavaScript, dan Bootstrap, memastikan pengalaman pengguna yang optimal di berbagai perangkat. Website ini menjadi solusi digital untuk meningkatkan efisiensi operasional laboratorium dan memudahkan komunikasi antar anggota lab."
                 ],
                 fitur: [
                     "Multi-role dashboard (Admin, Dosen, Talent)",
